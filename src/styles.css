@@ -1,0 +1,68 @@
+/* Global Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #ddd;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Base link style (won't affect mat-toolbar) */
+a {
+  text-decoration: none;
+  font-weight: 600;
+  color: inherit; /* inherit from parent like toolbar */
+}
+
+
+
+.movie-card img {
+  margin: 0 !important;  /* remove centering */
+  align-self: flex-start; /* align top of image */
+}
+
+.movie-card {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  margin-bottom: 1rem !important;
+  padding: 16px !important;        /* add padding inside card */
+  box-sizing: border-box !important; /* ensure padding counts inside size */
+}
+
+
+.movie-poster {
+  width: 150px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 4px !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important; /* reset margin */
+  align-self: flex-start !important;
+  transform: translate(15px, 10px);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Adjust based on screen height */
+}
+
+.loading {
+  width: 700px;
+  height: 300px;
+  text-align: center;
+}
+
+.auth-card {
+  max-width: 400px;
+  margin: 50px auto; /* centers the card */
+  padding: 20px;
+}
+
+.width-full {
+  width: 100%;
+}
+

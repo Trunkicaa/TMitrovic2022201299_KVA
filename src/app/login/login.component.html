@@ -1,0 +1,26 @@
+<mat-card class="auth-card">
+  <mat-card-header>
+    <h1>Login Page</h1>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="example-form">
+      <mat-form-field class="width-full">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput placeholder="Input your email..." [(ngModel)]="email" name="email">
+      </mat-form-field>
+
+      <mat-form-field class="width-full">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="Pick a password for your email" [(ngModel)]="password" name="password">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button type="button" mat-button (click)="doLogin()">
+            <i class="fa-solid fa-right-to-bracket"></i> Login now
+        </button>
+    <a routerLink="/signup" mat-button>Create an account</a>
+  </mat-card-actions>
+</mat-card>

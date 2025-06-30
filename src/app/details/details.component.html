@@ -1,0 +1,26 @@
+<div class="wrapper" *ngIf="movie">
+    <h3 class="movie-title">{{movie.originalTitle}}</h3>
+    <div class="movie-content"> 
+        <mat-card class="movie-card" appearance="outlined">
+            <img *ngIf="movie?.poster; else noImage" [src]="movie.poster" alt="{{ movie.title }}"
+                class="movie-poster big-poster" />
+
+            <ng-template #noImage>
+                <p>No image available</p>
+            </ng-template>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item>Started: {{utils.formatDate(movie.startDate)}}</mat-list-item>
+                    <mat-list-item>Title: {{movie.title}}</mat-list-item>
+                    <mat-list-item>Description: {{movie.shortDescription}}</mat-list-item>
+                    <mat-list-item>Director: {{movie.director.name}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+            <mat-card-actions>
+                <a mat-button [routerLink]="['/details/', movie.movieId, 'reserve']"><i class="fa-solid fa-card-shopping">Reserve</i></a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+
+<app-loading *ngIf="!movie" />
