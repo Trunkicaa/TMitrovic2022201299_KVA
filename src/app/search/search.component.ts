@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-search',
   imports: [MatTableModule, NgIf, NgFor, MatButtonModule, LoadingComponent, RouterLink],
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']  // <-- plural
+  styleUrls: ['./search.component.css'] 
 })
 export class SearchComponent {
   displayedColumns: string[] = ['movieId', 'title', 'director', 'genre', 'actions', ];

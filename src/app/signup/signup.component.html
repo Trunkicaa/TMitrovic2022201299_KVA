@@ -1,0 +1,68 @@
+<mat-card class="auth-card">
+    <mat-card-header>
+        <h1>Register Now</h1>
+    </mat-card-header>
+
+    <mat-card-content>
+        <form class="example-form">
+            <mat-form-field class="width-full">
+                <mat-label>First Name</mat-label>
+                <input type="text" matInput placeholder="Put your first name here " [(ngModel)]="firstName"
+                    name="firstName">
+            </mat-form-field>
+
+            <mat-form-field class="width-full">
+                <mat-label>Last Name</mat-label>
+                <input type="text" matInput placeholder="Put your last name here " [(ngModel)]="lastName"
+                    name="lastName">
+            </mat-form-field>
+
+            <mat-form-field class="width-full">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Put your email here" [(ngModel)]="email" name="email">
+            </mat-form-field>
+
+            <mat-form-field class="width-full">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="Put your password here" [(ngModel)]="password"
+                    name="password">
+            </mat-form-field>
+
+            <mat-form-field class="width-full">
+                <mat-label>Repeat password</mat-label>
+                <input type="password" matInput placeholder="Repeat your password" [(ngModel)]="repeatPassword"
+                    name="repeatPassword">
+            </mat-form-field>
+
+            <mat-form-field class="width-full">
+                <mat-label>Phone number</mat-label>
+                <input type="tel" matInput placeholder="Put your phone number here" [(ngModel)]="phone" name="phone">
+            </mat-form-field>
+
+            <mat-form-field class="width-full">
+                <mat-label>Address</mat-label>
+                <input type="text" matInput placeholder="Put your address here" [(ngModel)]="address" name="address">
+            </mat-form-field>
+
+            <section *ngIf="genres.length > 0">
+                <h4>Select your movie genres:</h4>
+                <div *ngFor="let genre of genres">
+                    <label>
+                        <input type="checkbox" [(ngModel)]="selectedGenres[genre]" name="{{genre}}" />
+                        {{ genre }}
+                    </label>
+                </div>
+            </section>
+
+            <p *ngIf="genres.length === 0">Loading genres...</p>
+
+        </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button type="button" mat-button (click)="doSignup()">
+            <i class="fa-solid fa-right-to-bracket"></i> Create account
+        </button>
+        <a routerLink="/login" mat-button>I already have an account</a>
+    </mat-card-actions>
+</mat-card>

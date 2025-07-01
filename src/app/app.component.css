@@ -1,27 +1,25 @@
-/* === Toolbar Styling === */
+
 mat-toolbar {
   display: flex;
   align-items: center;
   justify-content: start;
   gap: 12px;
   padding: 0 16px;
-  background-color: #4B0000; /* Dark Maroon */
-  color: #fff; /* Text color */
+  background-color: #4B0000; 
+  color: #fff;
   height: 80px;
 }
 
-/* Title Styling */
 .title {
   font-size: 2.5rem;
   font-weight: bold;
   display: flex;
   align-items: center;
-  color: #FFD700; /* Bright Gold */
+  color: #FFD700; 
 }
 
-/* Buttons in toolbar */
 mat-toolbar a.mat-button {
-  color: #B8860B !important; /* Dark Gold */
+  color: #B8860B !important;
   font-weight: 600;
   font-size: 2rem;
   padding: 0 8px;
@@ -29,11 +27,11 @@ mat-toolbar a.mat-button {
 }
 
 mat-toolbar a.mat-button:hover {
-  color: #FFF5E1 !important; /* Light cream hover */
+  color: #FFF5E1 !important; 
   text-decoration: underline;
 }
 
-/* Optional responsive: hide About on small screens */
+
 @media only screen and (max-width: 630px) {
   .about-btn {
     display: none;

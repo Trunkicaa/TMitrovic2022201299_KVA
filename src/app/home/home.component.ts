@@ -23,7 +23,6 @@ export class HomeComponent{
   constructor(public utils: UtilsService) {
     MovieService.getMovies()
       .then(rsp => {
-        // rsp.data contains all movies; show only first 12
         this.movies = rsp.data.slice(0, 12);
       })
       .catch(e => this.error = `${e.code}: ${e.message}`);

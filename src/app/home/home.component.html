@@ -1,4 +1,3 @@
-<!-- Error message -->
 <div *ngIf="error" class="container">
   <mat-card class="loading" appearance="outlined">
     <mat-card-content>
@@ -8,7 +7,7 @@
   </mat-card>
 </div>
 
-<!-- Movie list -->
+
 <div *ngIf="movies">
   <div *ngFor="let movie of movies">
     <mat-card appearance="outlined" class="movie-card">
@@ -17,8 +16,7 @@
       <ng-template #noImage>
         <img mat-card-image src="assets/no-image.png" alt="No poster available" class="movie-poster" />
       </ng-template>
-
-      <!-- Movie details on the right -->
+      
       <div class="movie-details" style="margin-left: 16px; flex: 1;">
         <mat-card-content>
           <p *ngIf="movie.description">{{ movie.description }}</p>

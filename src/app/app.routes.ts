@@ -7,6 +7,7 @@ import { DetailsComponent } from './details/details.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { ReserveComponent } from './reserve/reserve.component';
+import { SignupComponent } from './signup/signup.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -16,6 +17,7 @@ export const routes: Routes = [
     {path: 'details/:id/reserve', component: ReserveComponent},
     {path: 'details/:id', component: DetailsComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'signup', component: SignupComponent},
     {path: 'user', component: UserComponent},
     {path: '**', redirectTo: ''}
 ]

@@ -33,19 +33,15 @@ export class UserComponent {
 
     this.user = activeUser;
     this.userCopy = { ...activeUser };
-
-    // Call getMovies to fetch movies, e.g. first page, default search
+   
     MovieService.getMovies('', 12, 1)
       .then(response => {
-        // Axios responses put data in response.data
         this.movieList = response.data;
       })
       .catch(error => {
         console.error('Failed to load movies:', error);
       });
   }
-
-
 
   public doChangePassword() {
     const newPassword = prompt('Enter your new password')
