@@ -2,6 +2,7 @@ import { CinemaModel } from "./cinema.model"
 
 
 export interface ReserveModel {
+    id: number
     movieId: number
     movieTitle: string
     director: string

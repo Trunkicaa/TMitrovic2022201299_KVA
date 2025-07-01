@@ -14,8 +14,6 @@ a {
   color: inherit; /* inherit from parent like toolbar */
 }
 
-
-
 .movie-card img {
   margin: 0 !important;  /* remove centering */
   align-self: flex-start; /* align top of image */
@@ -66,3 +64,27 @@ a {
   width: 100%;
 }
 
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.width-full {
+  width: 100%;
+}
+
+.wrapper {
+  margin-top: 30px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.actions {
+  width: 300px;
+  height: 52px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

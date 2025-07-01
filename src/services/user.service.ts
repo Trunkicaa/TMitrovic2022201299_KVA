@@ -47,25 +47,41 @@ export class UserService {
 
 
     static createReservation(reservation: ReserveModel): boolean {
-    const users = this.retrieveUsers(); // get all users from localStorage
-    const activeEmail = localStorage.getItem('active');
-    if (!activeEmail) return false; // no active user
-    for (let user of users) {
-        if (user.email === activeEmail) {
-            if (!user.reserve) {
-                user.reserve = [];
-            }
-            user.reserve.push(reservation); 
-            localStorage.setItem('users', JSON.stringify(users)); 
-            return true;
-        } }
-    return false; 
+        console.log('createReservation called with:', reservation);
+        const user = this.retrieveUsers();
+        const activeEmail = localStorage.getItem('active');
+        const activeUser = user.find(u => u.email === activeEmail);
+        if (!activeUser) {
+            console.log('Active user not found in users list');
+            return false;
+        }
+        if (!activeUser.reserve) {
+            activeUser.reserve = [];
+        }
+        activeUser.reserve.push(reservation);
+        localStorage.setItem('users', JSON.stringify(user));
+        return true;
+    }
+
+    static changeReservationStatus(state: 'rezervisano' | 'gledano' | 'otkazano', id: number): boolean {
+  const activeEmail = localStorage.getItem('active');
+  if (!activeEmail) return false;
+
+  const arr = this.retrieveUsers();
+  const user = arr.find(u => u.email === activeEmail);
+  if (!user) return false;
+
+  const reservation = user.reserve.find(r => r.id === id);
+  if (!reservation) return false;
+
+  reservation.status = state;
+  localStorage.setItem('users', JSON.stringify(arr));
+  return true;
 }
 
 
-
     static changePassword(newPassword: string): boolean {
-        
+
         const arr = this.retrieveUsers()
         for (let user of arr) {
             if (user.email == localStorage.getItem('active')) {

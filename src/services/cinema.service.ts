@@ -25,4 +25,8 @@ export class CinemaService {
             },
         ]
     }
+
+    static getCinemaById(id:number) {
+        return this.getCinemas().find(cinema=>cinema.id === id)
+    }
 }

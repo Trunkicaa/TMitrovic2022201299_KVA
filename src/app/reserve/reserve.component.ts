@@ -24,7 +24,7 @@ import { MatTableModule } from '@angular/material/table';
 export class ReserveComponent {
   public movie: Movie | null = null
   public cinema: CinemaModel[] = CinemaService.getCinemas()
-  public selectedCinema: CinemaModel = this.cinema[0]
+  public selectedCinema: number = this.cinema[0].id
   public selectedTicketCount: number = 1
   public selectedPrice: number = 500 | 300
 
@@ -37,14 +37,16 @@ export class ReserveComponent {
         })
     })
   }
+
   public doReserve() {
 
     const result = UserService.createReservation({
+      id: new Date().getTime(),
       movieId: this.movie!.movieId,
       movieTitle: this.movie!.title,
       director: this.movie!.director.name,
       description: this.movie!.description,
-      cinema: this.selectedCinema,
+      cinema: CinemaService.getCinemaById(this.selectedCinema)!,
       pricePerItem: this.selectedPrice,
       ticketNumber: this.selectedTicketCount,
       status: 'rezervisano',

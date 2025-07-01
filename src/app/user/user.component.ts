@@ -1,32 +1,50 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { Router } from '@angular/router';
-import { JsonPipe, NgFor, NgIf } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
+import { NgFor, NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { UserModel } from '../../models/user.model';
 import { MatTableModule } from '@angular/material/table';
 import { UtilsService } from '../../services/utils.service';
+import { MovieService } from '../../services/movie.service';
+import { ReserveModel } from '../../models/reserve.model';
 
 @Component({
   selector: 'app-user',
-  imports: [JsonPipe,NgFor, NgIf, MatButtonModule, MatCardModule, MatTableModule],
+  imports: [NgIf, MatButtonModule, MatCardModule, MatTableModule, RouterLink],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  displayedColumns: string[] = ['movieId', 'movieTitle', 'director', 'actions','ticketNumber', 'pricePerItem', 'total'];
+  displayedColumns: string[] = ['movieId', 'movieTitle', 'cinema', 'director','ticketNumber', 'pricePerItem', 'total', 'status', 'rating', 'actions'];
   public user: UserModel | null = null
+  public userCopy: UserModel | null = null
+  public movieList: any[] = [];
 
-  constructor(private router: Router, public utils: UtilsService) {
-    const activeUser = UserService.getActiveUser();
 
-    if (!activeUser) {
-      router.navigate(['/home']);
-      return; // IMPORTANT: stop further execution if no user
-    }
-    this.user = activeUser
+  constructor(private router: Router) {
+  const activeUser = UserService.getActiveUser();
+
+  if (!activeUser) {
+    router.navigate(['/home']);
+    return;
   }
+
+  this.user = activeUser;
+  this.userCopy = { ...activeUser };
+
+  // Call getMovies to fetch movies, e.g. first page, default search
+  MovieService.getMovies('', 12, 1)
+    .then(response => {
+      // Axios responses put data in response.data
+      this.movieList = response.data;  
+    })
+    .catch(error => {
+      console.error('Failed to load movies:', error);
+    });
+}
+
 
 
   public doChangePassword() {
@@ -38,4 +56,10 @@ export class UserComponent {
     alert(UserService.changePassword(newPassword) ? 'Password has been changed' : 'Failed to change password')
 
   }
+
+  public doCancel(reserve: ReserveModel) {
+  if(UserService.changeReservationStatus('otkazano', reserve.id)) {
+    this.user = UserService.getActiveUser()
+  }
+}
 }
