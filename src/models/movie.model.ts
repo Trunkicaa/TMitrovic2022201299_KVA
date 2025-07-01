@@ -30,6 +30,16 @@ export interface Director {
   createdAt: string;
 }
 
+export interface Projection {
+  projectionId: number;
+  movieId: number;
+  startTime: string; 
+  price: number;
+  status: 'rezervisano' | 'gledano' | 'otkazano';
+  rating: number | null;
+  cinemaId?: number;
+}
+
 export interface Movie {
   movieId: number;
   internalId: string;
@@ -47,6 +57,7 @@ export interface Movie {
   createdAt: string;
   updatedAt: string | null;
 
+  projection: Projection
   director: Director;
   movieActors: MovieActor[];
   movieGenres: MovieGenre[];

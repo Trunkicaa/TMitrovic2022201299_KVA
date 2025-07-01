@@ -1,0 +1,16 @@
+.search-input {
+  width: 60%;
+  padding: 10px 40px 10px 12px; /* space for icon on right */
+  font-size: 16px;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: white url('data:image/svg+xml;utf8,<svg fill="gray" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27a6.518 6.518 0 001.48-5.34C15.01 6.4 12.61 4 9.5 4S4 6.4 4 9.5 6.4 15 9.5 15c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>') no-repeat right 10px center;
+  background-size: 20px 20px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #3f51b5; /* Material Indigo */
+  box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+}

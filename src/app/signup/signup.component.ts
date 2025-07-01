@@ -27,7 +27,7 @@ export class SignupComponent {
     MovieService.getGenres()
       .then(response => {
         const genreObjects = response.data;
-        this.genres = genreObjects.map(g => g.name); 
+        this.genres = genreObjects.map(g => g.name);
         this.genres.forEach(genre => (this.selectedGenres[genre] = false));
         this.cdr.markForCheck();
       })
@@ -35,6 +35,19 @@ export class SignupComponent {
   }
 
   doSignup() {
+
+    if (
+      !this.firstName.trim() ||
+      !this.lastName.trim() ||
+      !this.email.trim() ||
+      !this.password ||
+      !this.repeatPassword ||
+      !this.phone.trim() ||
+      !this.address.trim()
+    ) {
+      alert('All fields must be filled out!');
+      return;
+    }
     const chosenGenres = Object.keys(this.selectedGenres).filter((g) => this.selectedGenres[g]);
     if (this.email == '' || this.password == '') {
       alert('Email or/and password require filled forms')
@@ -55,7 +68,7 @@ export class SignupComponent {
       reserve: [],
       selectedGenres: chosenGenres
     })
-    result ? this.router.navigate(['/login']): alert('Email is already taken')
+    result ? this.router.navigate(['/login']) : alert('Email is already taken')
   }
 
 

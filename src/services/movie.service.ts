@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 const client = axios.create({
   baseURL: 'https://movie.pequla.com/api',
   headers: {
@@ -21,5 +22,9 @@ export class MovieService {
   static async getGenres(): Promise<{ data: any[] }> {
   return client.get('/genre');
 }
+
+const now = new Date();
+const iso = now.toISOString(); // ✅ "2025-07-01T14:23:45.000Z"
+
 
 }
