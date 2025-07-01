@@ -17,33 +17,33 @@ import { ReserveModel } from '../../models/reserve.model';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  displayedColumns: string[] = ['movieId', 'movieTitle', 'cinema', 'director','ticketNumber', 'pricePerItem', 'total', 'status', 'rating', 'actions'];
+  displayedColumns: string[] = ['movieId', 'movieTitle', 'cinema', 'director', 'ticketNumber', 'pricePerItem', 'total', 'status', 'rating', 'actions'];
   public user: UserModel | null = null
   public userCopy: UserModel | null = null
   public movieList: any[] = [];
 
 
   constructor(private router: Router) {
-  const activeUser = UserService.getActiveUser();
+    const activeUser = UserService.getActiveUser();
 
-  if (!activeUser) {
-    router.navigate(['/home']);
-    return;
+    if (!activeUser) {
+      router.navigate(['/home']);
+      return;
+    }
+
+    this.user = activeUser;
+    this.userCopy = { ...activeUser };
+
+    // Call getMovies to fetch movies, e.g. first page, default search
+    MovieService.getMovies('', 12, 1)
+      .then(response => {
+        // Axios responses put data in response.data
+        this.movieList = response.data;
+      })
+      .catch(error => {
+        console.error('Failed to load movies:', error);
+      });
   }
-
-  this.user = activeUser;
-  this.userCopy = { ...activeUser };
-
-  // Call getMovies to fetch movies, e.g. first page, default search
-  MovieService.getMovies('', 12, 1)
-    .then(response => {
-      // Axios responses put data in response.data
-      this.movieList = response.data;  
-    })
-    .catch(error => {
-      console.error('Failed to load movies:', error);
-    });
-}
 
 
 
@@ -58,8 +58,20 @@ export class UserComponent {
   }
 
   public doCancel(reserve: ReserveModel) {
-  if(UserService.changeReservationStatus('otkazano', reserve.id)) {
-    this.user = UserService.getActiveUser()
+    if (UserService.changeReservationStatus('otkazano', reserve.id)) {
+      this.user = UserService.getActiveUser()
+    }
   }
-}
+
+  public doWatch(reserve: ReserveModel) {
+    if (UserService.changeReservationStatus('gledano', reserve.id)) {
+      this.user = UserService.getActiveUser()
+    }
+  }
+
+  public doRating(reserve: ReserveModel, rate: boolean) {
+    if (UserService.changeRating(rate, reserve.id)) {
+      this.user = UserService.getActiveUser()
+    }
+  }
 }

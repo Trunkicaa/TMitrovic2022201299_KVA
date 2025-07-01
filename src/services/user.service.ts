@@ -64,20 +64,20 @@ export class UserService {
     }
 
     static changeReservationStatus(state: 'rezervisano' | 'gledano' | 'otkazano', id: number): boolean {
-  const activeEmail = localStorage.getItem('active');
-  if (!activeEmail) return false;
+        const activeEmail = localStorage.getItem('active');
+        if (!activeEmail) return false;
 
-  const arr = this.retrieveUsers();
-  const user = arr.find(u => u.email === activeEmail);
-  if (!user) return false;
+        const arr = this.retrieveUsers();
+        const user = arr.find(u => u.email === activeEmail);
+        if (!user) return false;
 
-  const reservation = user.reserve.find(r => r.id === id);
-  if (!reservation) return false;
+        const reservation = user.reserve.find(r => r.id === id);
+        if (!reservation) return false;
 
-  reservation.status = state;
-  localStorage.setItem('users', JSON.stringify(arr));
-  return true;
-}
+        reservation.status = state;
+        localStorage.setItem('users', JSON.stringify(arr));
+        return true;
+    }
 
 
     static changePassword(newPassword: string): boolean {
@@ -93,4 +93,22 @@ export class UserService {
 
         return false
     }
+
+    static changeRating(rating: boolean, id: number): boolean {
+        const activeEmail = localStorage.getItem('active');
+        if (!activeEmail) return false;
+
+        const arr = this.retrieveUsers();
+        const user = arr.find(u => u.email === activeEmail);
+        if (!user) return false;
+
+        const reservation = user.reserve.find(res => res.id === id && res.status === 'gledano');
+        if (!reservation) return false;
+
+        reservation.rating = rating;
+
+        localStorage.setItem('users', JSON.stringify(arr));
+        return true;
+    }
+
 }

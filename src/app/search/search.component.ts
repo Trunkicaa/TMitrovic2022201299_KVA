@@ -22,7 +22,7 @@ export class SearchComponent {
   constructor(public utils: UtilsService) {
 MovieService.getMovies()
   .then(rsp => {
-    this.dataSource = rsp.data.slice(0, 12);
+    this.dataSource = rsp.data.slice(0, 30);
   })
 }
 }

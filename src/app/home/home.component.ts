@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { NgFor, NgIf } from '@angular/common';
 import { Movie } from '../../models/movie.model';
@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent{
   public movies: Movie[] | null = null
   public error: string | null = null
 
@@ -30,3 +30,5 @@ export class HomeComponent {
 
   }
 }
+
+

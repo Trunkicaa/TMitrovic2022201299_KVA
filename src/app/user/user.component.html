@@ -61,7 +61,17 @@
 
                 <ng-container matColumnDef="rating">
                     <th mat-header-cell *matHeaderCellDef> Ocena</th>
-                    <td mat-cell *matCellDef="let element"> {{element.rating?element.rating: 'No rating'}} </td>
+                    <td mat-cell *matCellDef="let element"> 
+                        <div *ngIf="element.rating == null">
+                            NO RATING
+                        </div>
+                        <div *ngIf="element.rating == true">
+                            LIKED
+                        </div>
+                        <div *ngIf="element.rating == false">
+                            DISLIKED
+                        </div>
+                        </td>
                 </ng-container>
 
 
@@ -70,13 +80,19 @@
                     <td mat-cell *matCellDef="let element" class="actions">
                         <a mat-button [routerLink]="['/details/', element.movieId]">Details</a>
                         <div *ngIf="element.status == 'rezervisano'">
+                            <button type="button" mat-button (click)="doWatch(element)">
+                                <span class="link-name">Watched</span>
+                            </button>
                             <button type="button" mat-button (click)="doCancel(element)">
                                 Cancel
                             </button>
                         </div>
-                        <div *ngIf="element.status == 'gledano'">
-                            <button type="button" mat-button>
-                                Rate
+                        <div *ngIf="element.status === 'gledano' && element.rating === null">
+                            <button type="button" mat-button (click)="doRating(element, true)">
+                                <i class="fa-solid fa-thumbs-up"></i>Like
+                            </button>
+                            <button type="button" mat-button (click)="doRating(element, false)">
+                                <i class="fa-solid fa-thumbs-down"></i>Dislike
                             </button>
                         </div>
                     </td>
