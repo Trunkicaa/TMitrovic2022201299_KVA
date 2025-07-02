@@ -1,11 +1,12 @@
 <div *ngIf="movie">
     <mat-card class="reserve-card" appearance="outlined">
+
         <img *ngIf="movie?.poster; else noImage" [src]="movie.poster" alt="{{ movie.title }}"
             class="movie-poster big-poster" />
-
         <ng-template #noImage>
             <p>No image available</p>
         </ng-template>
+
         <mat-card-content>
             <h2>Reservaton Details - {{movie.title}}</h2>
             <mat-form-field class="width-full">
@@ -41,6 +42,7 @@
                 </mat-select>
             </mat-form-field>
         </mat-card-content>
+        
         <mat-card-actions>
             <button mat-button (click)="doReserve()"><i class="fa-solid fa-card-shopping">Reserve Now</i></button>
         </mat-card-actions>

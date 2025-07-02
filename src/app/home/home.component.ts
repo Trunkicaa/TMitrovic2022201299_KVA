@@ -10,8 +10,6 @@ import { RouterLink } from '@angular/router';
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 
-
-
 @Component({
   selector: 'app-home',
   imports: [NgIf, NgFor, MatButtonModule, MatCardModule, LoadingComponent, RouterLink],
@@ -42,7 +40,6 @@ export class HomeComponent implements OnInit {
     })
     .catch(e => this.error = `${e.code}: ${e.message}`);
 }
-
 }
 
 

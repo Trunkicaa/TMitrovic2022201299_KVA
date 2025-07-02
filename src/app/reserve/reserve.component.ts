@@ -26,7 +26,6 @@ export class ReserveComponent {
   public selectedPrice: 300 | 500 | 700 = 300;
   public selectedProjectionTime: string | null = null;
 
-
   public constructor(private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
       const movieId = +params['id'];

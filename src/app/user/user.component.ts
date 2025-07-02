@@ -124,7 +124,6 @@ export class UserComponent implements OnInit {
     alert(UserService.changeFirstName(newFirstName) ? 'First Name has been changed' : 'Failed to change first name');
   }
 
-
   public changeLastName() {
     const newLastName = prompt('Enter your new last name')
     if (newLastName == '' || newLastName == null) {
@@ -157,8 +156,6 @@ export class UserComponent implements OnInit {
     alert(UserService.changePhoneNumber(newPhoneNumber) ? 'Phone number has been changed' : 'Failed to change phone number');
   }
 
-
-
   public doCancel(reserve: ReserveModel) {
     if (UserService.changeReservationStatus('otkazano', reserve.id)) {
       this.user = UserService.getActiveUser();
@@ -189,7 +186,6 @@ export class UserComponent implements OnInit {
       }
     }
   }
-
 
   doRating(reserve: ReserveModel, liked: boolean) {
     let storedRatings = JSON.parse(localStorage.getItem('movieRatings') || '{}');

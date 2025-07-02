@@ -22,7 +22,6 @@ export class DetailsComponent implements OnInit {
   public movie: Movie | null = null;
   public userRating: boolean | null = null;
   public user: UserModel | null = null;
-  
 
   constructor(
     private route: ActivatedRoute,

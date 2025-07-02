@@ -17,7 +17,6 @@ export class UserService {
                     selectedGenres: []
                 }
             ];
-
             localStorage.setItem('users', JSON.stringify(arr));
         }
 
@@ -36,7 +35,6 @@ export class UserService {
         localStorage.setItem('users', JSON.stringify(users))
         return true
     }
-
 
     static login(email: string, password: string): boolean {
         for (let user of this.retrieveUsers()) {
@@ -102,7 +100,6 @@ export class UserService {
         localStorage.setItem('users', JSON.stringify(arr));
         return true;
     }
-
 
     static changePassword(newPassword: string): boolean {
 
@@ -181,5 +178,4 @@ export class UserService {
         localStorage.setItem('users', JSON.stringify(arr));
         return true;
     }
-
 }

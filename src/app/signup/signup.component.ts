@@ -57,7 +57,6 @@ export class SignupComponent {
       return
     }
 
-
     const result = UserService.createUser({
       email: this.email,
       password: this.password,
@@ -70,7 +69,6 @@ export class SignupComponent {
     })
     result ? this.router.navigate(['/login']) : alert('Email is already taken')
   }
-
 
   public email = '';
   public password = '';

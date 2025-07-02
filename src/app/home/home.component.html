@@ -11,6 +11,7 @@
 <div *ngIf="movies">
   <div *ngFor="let movie of movies">
     <mat-card appearance="outlined" class="movie-card">
+      
       <img *ngIf="movie.poster; else noImage" mat-card-image [src]="movie.poster" alt="{{ movie.title }}"
         class="movie-poster" />
       <ng-template #noImage>
@@ -45,7 +46,6 @@
             </span>
             <span *ngIf="!movie.movieActors || movie.movieActors.length === 0">None listed</span>
           </p>
-
         </mat-card-content>
 
         <mat-card-actions>

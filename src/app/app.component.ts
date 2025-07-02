@@ -22,5 +22,4 @@ export class AppComponent {
     localStorage.removeItem('active')
     this.router.navigate(['/login'])
   }
-
 }

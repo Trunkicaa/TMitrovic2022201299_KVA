@@ -32,6 +32,7 @@
           </select>
         </div>
       </div>
+
       <div class="search-input-row">
         <div class="search-group">
           <label class="search-label" for="genreSelect">Select Genre</label>
@@ -56,6 +57,7 @@
         </div>
       </div>
     </mat-card-content>
+
     <mat-card-actions>
       <button mat-button (click)="doReset()">
         <i class="fa-solid fa-ban"></i> Reset all search criteria
@@ -136,5 +138,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
-
 <app-loading *ngIf="!dataSource" />

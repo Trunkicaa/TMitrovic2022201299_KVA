@@ -43,8 +43,6 @@ export class SearchComponent {
   releaseDateList: string[] = [];
   public user: UserModel | null = null;
   public movie: Movie | null = null;
-  
-
 
   constructor(public utils: UtilsService) {
     this.user = UserService.getActiveUser();
@@ -81,13 +79,11 @@ export class SearchComponent {
       .sort();
 
     this.releaseDateList = source
-      .map(movie => movie.startDate?.split('T')[0] || '') // or movie.startDate
+      .map(movie => movie.startDate?.split('T')[0] || '') 
       .filter(date => date !== '')
       .filter((date, i, arr) => arr.indexOf(date) === i)
       .sort();
   }
-
-
 
   public doReset() {
     this.userInput = ''
@@ -100,7 +96,6 @@ export class SearchComponent {
     this.dataSource = this.allData
     this.searchCriteria(this.allData!)
   }
-
 
   public doFilterChain() {
     if (this.allData == null) return;
@@ -146,13 +141,12 @@ export class SearchComponent {
 
       .filter(movie => {
         if (!this.selectedStartDate) return true;
-        const movieDate = movie.startDate?.split('T')[0]; // or movie.startDate
+        const movieDate = movie.startDate?.split('T')[0];
         return movieDate === this.selectedStartDate;
       });
 
     this.searchCriteria(this.dataSource);
   }
-
 
   public doSearch(e: any) {
     const search = e.target.value
@@ -169,6 +163,4 @@ export class SearchComponent {
           || obj.director.name.toLowerCase().includes(search) || obj.movieGenres?.some(g => g.genre.name.toLowerCase().includes(search))
       })
   }
-
-
 }

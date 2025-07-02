@@ -8,5 +8,4 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './loading.component.css'
 })
 export class LoadingComponent {
-
 }
