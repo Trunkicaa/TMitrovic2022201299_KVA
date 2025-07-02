@@ -2,7 +2,6 @@
   <a mat-button routerLink="/"><span class="title"><i class="fa-solid fa-film"></i>IBioskop</span></a>
   <a mat-button routerLink="/search" class="toolbar-item"><i class="fa-solid fa-magnifying-glass"></i>Search</a>
   <a mat-button routerLink="/about" class="toolbar-item">About</a>
-  <a mat-button routerLink="/cinema" class="toolbar-item">Cinema</a>
   <a mat-button routerLink="/login" *ngIf="!service.getActiveUser()" class="toolbar-item">Login</a>
   <a mat-button routerLink="/user" *ngIf="service.getActiveUser()" class="toolbar-item">Korpa</a>
   <button mat-button (click)="doLogout()" *ngIf="service.getActiveUser()" class="toolbar-item">Logout</button>
