@@ -1,15 +1,15 @@
-import { CinemaModel } from "./cinema.model"
-
-
 export interface ReserveModel {
-    id: number
-    movieId: number
-    movieTitle: string
-    director: string
-    cinema: CinemaModel
-    description: string
-    pricePerItem: number
-    ticketNumber: number
-    status: 'rezervisano' | 'gledano' | 'otkazano'
-    rating: null | boolean
+    id: number;
+    movieId: number;
+    movieTitle: string;
+    director: string;
+    description: string;
+    pricePerItem: number;
+    ticketNumber: number;
+    rating: null | boolean;
+    status: 'rezervisano' | 'gledano' | 'otkazano';
+    projectionTime: string | null;
+    runTime?: number;
+    startDate?: string;
+    actors?: string[];
 }

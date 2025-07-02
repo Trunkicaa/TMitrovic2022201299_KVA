@@ -9,8 +9,8 @@
         <mat-card-content>
             <h2>Reservaton Details - {{movie.title}}</h2>
             <mat-form-field class="width-full">
-                    <mat-label>Title</mat-label>
-                    <input matInput [value]="movie.title" disabled>
+                <mat-label>Title</mat-label>
+                <input matInput [value]="movie.title" disabled>
             </mat-form-field>
             <mat-form-field class="width-full">
                 <mat-label>Director</mat-label>
@@ -20,26 +20,23 @@
                 <mat-label>Desc:</mat-label>
                 <input matInput [value]="movie.description" disabled>
             </mat-form-field>
-            <mat-form-field class="full-width">
-                <mat-label>Cinema</mat-label>
-                <mat-select [(ngModel)]="selectedCinema">
-                <mat-option *ngFor="let c of cinema" [value]="c.id">{{c.name}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-
             <mat-form-field class="width-full">
                 <mat-label>Tickets:</mat-label>
                 <input type="number" matInput [(ngModel)]="selectedTicketCount">
             </mat-form-field>
-
-            <mat-form-field class="width-full">
-                <mat-label>Price Type</mat-label>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose ticket type</mat-label>
                 <mat-select [(ngModel)]="selectedPrice">
-                    <mat-option [value]="300">
-                        Normal 300&euro;
-                    </mat-option>
-                    <mat-option [value]="500">
-                        VIP 500&euro;
+                    <mat-option [value]="300">Normal 300&euro;</mat-option>
+                    <mat-option [value]="500">3D 500&euro;</mat-option>
+                    <mat-option [value]="700">VIP 700&euro;</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="width-full">
+                <mat-label>Select Projection Time</mat-label>
+                <mat-select [(ngModel)]="selectedProjectionTime" required>
+                    <mat-option *ngFor="let proj of movie?.projection" [value]="proj.startTime">
+                        {{ proj.startTime | date: 'medium' }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

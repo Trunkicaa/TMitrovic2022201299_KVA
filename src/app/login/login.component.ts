@@ -36,7 +36,6 @@ export class LoginComponent {
       this.router.navigate(['/user']);
       return;
     }
-
     alert('Bad email or password');
   }
 

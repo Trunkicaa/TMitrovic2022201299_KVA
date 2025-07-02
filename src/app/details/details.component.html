@@ -1,26 +1,35 @@
 <div class="wrapper" *ngIf="movie">
     <h3 class="movie-title">{{movie.originalTitle}}</h3>
-    <div class="movie-content"> 
+    <div class="movie-content">
         <mat-card class="movie-card" appearance="outlined">
             <img *ngIf="movie?.poster; else noImage" [src]="movie.poster" alt="{{ movie.title }}"
                 class="movie-poster big-poster" />
-
             <ng-template #noImage>
                 <p>No image available</p>
             </ng-template>
             <mat-card-content>
                 <mat-list role="list">
-                    <mat-list-item>Started: {{utils.formatDate(movie.startDate)}}</mat-list-item>
                     <mat-list-item>Title: {{movie.title}}</mat-list-item>
                     <mat-list-item>Description: {{movie.shortDescription}}</mat-list-item>
                     <mat-list-item>Director: {{movie.director.name}}</mat-list-item>
+                    <mat-list-item>Genre: {{ genreList }}</mat-list-item>
+                    <mat-list-item>Runtime {{ movie.runTime }}</mat-list-item>
+                    <mat-list-item>Actors: {{ actorList }}</mat-list-item>
+                    <mat-list-item>Started: {{ movie.startDate }}</mat-list-item>
                 </mat-list>
             </mat-card-content>
+            <div *ngIf="userRating !== null">
+                Your rating:
+                <span *ngIf="userRating === true" style="color: green;">Liked 👍</span>
+                <span *ngIf="userRating === false" style="color: red;">Disliked 👎</span>
+            </div>
             <mat-card-actions>
-                <a mat-button [routerLink]="['/details/', movie.movieId, 'reserve']"><i class="fa-solid fa-card-shopping">Reserve</i></a>
+                <a mat-button *ngIf="user"[routerLink]="['/details/', movie.movieId, 'reserve']"><i
+              class="fa-solid fa-card-shopping">Reserve</i></a>
             </mat-card-actions>
         </mat-card>
     </div>
+
 </div>
 
 <app-loading *ngIf="!movie" />

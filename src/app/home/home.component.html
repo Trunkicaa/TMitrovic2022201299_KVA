@@ -19,6 +19,7 @@
       
       <div class="movie-details" style="margin-left: 16px; flex: 1;">
         <mat-card-content>
+          <mat-card-title><strong>Movie:</strong> {{movie.title}}</mat-card-title>
           <p *ngIf="movie.description">{{ movie.description }}</p>
 
           <p><strong>Director:</strong> {{ movie.director.name || 'Unknown' }}</p>
@@ -49,7 +50,7 @@
 
         <mat-card-actions>
           <button mat-button [routerLink]="['/details/', movie.movieId]">Details</button>
-          <a mat-button [routerLink]="['/details/', movie.movieId, 'reserve']"><i
+          <a mat-button *ngIf="user"[routerLink]="['/details/', movie.movieId, 'reserve']"><i
               class="fa-solid fa-card-shopping">Reserve</i></a>
         </mat-card-actions>
       </div>

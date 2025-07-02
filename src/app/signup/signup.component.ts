@@ -63,7 +63,7 @@ export class SignupComponent {
       password: this.password,
       firstName: this.firstName,
       lastName: this.lastName,
-      phone: Number(this.phone),
+      phone: this.phone,
       address: this.address,
       reserve: [],
       selectedGenres: chosenGenres

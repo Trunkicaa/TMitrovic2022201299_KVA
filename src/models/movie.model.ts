@@ -31,13 +31,13 @@ export interface Director {
 }
 
 export interface Projection {
-  projectionId: number;
-  movieId: number;
   startTime: string; 
-  price: number;
-  status: 'rezervisano' | 'gledano' | 'otkazano';
-  rating: number | null;
-  cinemaId?: number;
+}
+
+export enum PriceType {
+  Normal = 300,
+  VIP = 500,
+  Premium3D = 700
 }
 
 export interface Movie {
@@ -56,8 +56,11 @@ export interface Movie {
   active: boolean;
   createdAt: string;
   updatedAt: string | null;
+  price: PriceType[];
+  userRating: boolean | null;
+  
 
-  projection: Projection
+  projection: Projection[];
   director: Director;
   movieActors: MovieActor[];
   movieGenres: MovieGenre[];
