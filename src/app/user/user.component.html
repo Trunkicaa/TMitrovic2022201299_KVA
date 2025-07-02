@@ -108,8 +108,8 @@
             </ng-container>
 
             <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef> Actions </th>
-                <td mat-cell *matCellDef="let element" class="actions">
+                <th mat-header-cell *matHeaderCellDef class="status-cell"> Actions </th>
+                <td mat-cell *matCellDef="let element" class="status-cell">
                     <div class="buttons-container">
                         <div class="button-row" *ngIf="element.status == 'rezervisano'">
                             <a mat-button [routerLink]="['/details/', element.movieId]" class="details-link">Details</a>
